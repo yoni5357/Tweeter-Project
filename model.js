@@ -1,4 +1,10 @@
-let postArray = [
+class Tweeter{
+    #postArray
+    #postIdCounter
+    #commentIdCounter
+
+    constructor(){
+        this.#postArray = [
     {
         text: "First post!",
         id: "p1",
@@ -17,34 +23,37 @@ let postArray = [
             { id: "c6", text: "Haha second place what a joke." }
         ]
     }
-];
+    ]
+        this.#postIdCounter = 2;
+        this.#commentIdCounter = 6;
+    }
 
-let postIdCounter = 0;
-let commentIdCounter = 0;
+    getPosts(){
+    return [...this.#postArray];
+    }
 
-export function getPosts(){
-    return [...postArray];
+    addPost(text){
+        const newPost = {text: text, id:"p" + ++this.#postIdCounter, comments:[]};
+        this.#postArray.push(newPost);
+    }
+
+    removePost(postID){
+        this.#postArray = this.#postArray.filter((post) => post.id !== postID);
+    }
+
+    addComment(postID, text){
+        let post = this.#getPost(postID);
+        post.comments.push({id:"c" + ++this.#commentIdCounter, text: text});
+    }
+
+    removeComment(postID, commentID){
+        let post = this.#getPost(postID);
+        post.comments = post.comments.filter((comment) => comment.id !== commentID);
+    }
+
+    #getPost(postID){
+        return this.#postArray.find((post) => post.id === postID);
+    }
 }
 
-export function addPost(text){
-    let newPost = {text: text, id:"p" + ++postIdCounter, comments:[]};
-    postArray.push(newPost);
-}
-
-export function removePost(postID){
-    postArray = postArray.filter((post) => post.id !== postID);
-}
-
-export function addComment(postID, text){
-    let post = getPost(postID);
-    post.comments.push({id:"c" + ++commentIdCounter, text: text});
-}
-
-export function removeComment(postID, commentID){
-    let post = getPost(postID);
-    post.comments = post.comments.filter((comment) => comment.id !== commentID);
-}
-
-function getPost(postID){
-    return postArray.find((post) => post.id === postID);
-}
+export default Tweeter;
