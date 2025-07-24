@@ -1,4 +1,4 @@
-const postArray = [
+let postArray = [
     {
         text: "First post!",
         id: "p1",
