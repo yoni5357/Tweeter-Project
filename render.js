@@ -4,7 +4,7 @@ class Renderer{
         postsElement.innerHTML = "";
         for(let post of posts){
             let postDiv = document.createElement('div');
-            postDiv.attributes.setNamedItem("data-id", `${post.id}`);
+            postDiv.setAttribute("data-id", `${post.id}`);
             postDiv.className = "post";
 
             let postTextDiv = document.createElement('div');
@@ -15,29 +15,51 @@ class Renderer{
             let postCommentsDiv = document.createElement('div');
             for(let comment of post.comments){
                 let commentDiv = document.createElement('div');
-                commentDiv.attributes.setNamedItem('data-id', `${comment.id}`);
+                commentDiv.setAttribute('data-id', `${comment.id}`);
                 commentDiv.className = "comment";
 
-                let deleteCommentDiv = document.createElement('div');
-                deleteCommentDiv.textContent = "X";
-                deleteCommentDiv.className = "delete-comment"
+                let commentP = document.createElement('p');
+                commentP.textContent = `${comment.text}`;
+
+                let deleteCommentP = document.createElement('p');
+                deleteCommentP.textContent = "X";
+                deleteCommentP.className = "delete-comment"
+
+                commentDiv.appendChild(deleteCommentP);
+                commentDiv.appendChild(commentP);
 
                 postCommentsDiv.appendChild(commentDiv);
-                postCommentsDiv.appendChild(deleteCommentDiv);
 
                 postDiv.appendChild(postCommentsDiv);
             }
 
-            let commentInputDiv = document.createElement('input');
-            commentInputDiv.type = "text";
-            commentInputDiv.placeholder = "Got something to say?";
-            commentInputDiv.className = "comment";
+            let commentInputDiv = document.createElement('div');
+            commentInputDiv.className = "comment-input-container";
+
+            let commentInput = document.createElement('input');
+            commentInput.type = "text";
+            commentInput.placeholder = "Got something to say?";
+            commentInput.className = "comment";
 
             let commentButton = document.createElement('button');
             commentButton.className = "comment-button";
+            commentButton.textContent = "Comment"
+
+            commentInputDiv.appendChild(commentInput);
+            commentInputDiv.appendChild(commentButton);
+
+            let deletePostButton = document.createElement('button');
+            deletePostButton.className = "delete-button";
+            deletePostButton.textContent = "Delete Post";
 
             postDiv.appendChild(commentInputDiv);
-            postDiv.appendChild(commentButton);
+            postDiv.appendChild(deletePostButton);
+
+            postsElement.appendChild(postDiv);
+
         }
     }
 }
+
+
+export default Renderer;
