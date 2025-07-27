@@ -24,6 +24,8 @@ class Renderer{
                 let deleteCommentP = document.createElement('p');
                 deleteCommentP.textContent = "X";
                 deleteCommentP.className = "delete-comment"
+                deleteCommentP.setAttribute('data-comment-id', `${comment.id}`);
+                deleteCommentP.setAttribute('data-post-id', `${post.id}`)
 
                 commentDiv.appendChild(deleteCommentP);
                 commentDiv.appendChild(commentP);
@@ -38,19 +40,22 @@ class Renderer{
 
             let commentInput = document.createElement('input');
             commentInput.type = "text";
+            commentInput.setAttribute('data-post-id', post.id);
             commentInput.placeholder = "Got something to say?";
-            commentInput.className = "comment";
+            commentInput.className = "comment-input";
 
             let commentButton = document.createElement('button');
             commentButton.className = "comment-button";
+            commentButton.setAttribute('data-post-id', post.id)
             commentButton.textContent = "Comment"
 
             commentInputDiv.appendChild(commentInput);
             commentInputDiv.appendChild(commentButton);
 
             let deletePostButton = document.createElement('button');
-            deletePostButton.className = "delete-button";
+            deletePostButton.className = "delete-post-button";
             deletePostButton.textContent = "Delete Post";
+            deletePostButton.setAttribute('data-post-id', post.id);
 
             postDiv.appendChild(commentInputDiv);
             postDiv.appendChild(deletePostButton);
