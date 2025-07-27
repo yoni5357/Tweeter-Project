@@ -1,0 +1,80 @@
+#main-container{
+    margin: auto;
+    width: 70%;
+    background-color: #EBF0F1;
+}
+
+#main-header{
+    padding: 10px;
+}
+
+#input-container{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    margin: auto;
+}
+
+#twit-input{
+    width: 70%;
+    height: 30px;
+}
+
+#twit-button{
+    width: 20%;
+    background-color: #009BE1;
+    border: none;
+    border-radius: 3px;
+}
+
+#posts{
+    width: 90%;
+    margin:auto;
+    padding: 20px;
+}
+
+.post{
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 5px;
+    box-shadow: 1px 1px 1px black;
+}
+
+.post-text{
+    font-size: larger;
+    margin-bottom: 10px;
+}
+
+.post-comments{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.comment{
+    display: flex;
+    gap:5px;
+    align-items: center;
+}
+
+.comment > p{
+    margin:0;
+}
+
+.delete-comment{
+    color: red;
+    font-size: small;
+}
+
+.comment-input-container{
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.delete-post-button{
+    background-color: #F73D2B;
+    color: #EBF0F1;
+    border: none;
+    border-radius: 3px;
+}

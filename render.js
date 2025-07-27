@@ -13,6 +13,8 @@ class Renderer{
             postDiv.appendChild(postTextDiv);
 
             let postCommentsDiv = document.createElement('div');
+            postCommentsDiv.className = "post-comments"
+
             for(let comment of post.comments){
                 let commentDiv = document.createElement('div');
                 commentDiv.setAttribute('data-id', `${comment.id}`);
